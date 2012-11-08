@@ -62,7 +62,7 @@ public class Configuration {
 		props = new Properties();
         Environment environment=new Environment(settings);
         File fileConfig= new File(environment.configFile(), FILE_NAME);
-        this.mode=settings.getAsBoolean("UserMode", false);
+        this.mode=settings.getAsBoolean("usermode", true);
         logger.info("Use Mode:"+this.mode);
         InputStream input = null;// Configuration.class.getResourceAsStream(FILE_NAME);
         try {

@@ -10,7 +10,7 @@ import org.elasticsearch.common.logging.Loggers;
 import org.elasticsearch.common.settings.Settings;
 
 public class IKAnalyzer extends Analyzer {
-	private boolean useSmart = false;
+	private boolean useSmart = true;
 	private Settings settings;
 
 	public IKAnalyzer() {
@@ -22,8 +22,10 @@ public class IKAnalyzer extends Analyzer {
 		this.seUseSmart(useSmart);
 	}
 
-	public IKAnalyzer(Settings settings) {
-		this.settings=settings;
+	public IKAnalyzer(Settings settings,Settings settingsMode) {
+		this.settings=settingsMode;
+		this.useSmart=settingsMode.getAsBoolean("usermode", true);
+		
 		Dictionary.getInstance().Init(settings);
 	}
 
